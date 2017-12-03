@@ -37,17 +37,17 @@ gulp.task('sass', function () {
             includePaths: ['node_modules/susy/sass'] //compile susy
         }).on('error', sass.logError))
         .pipe(concat('main.css'))
-        .pipe(minifyCSS())
+        //.pipe(minifyCSS())
         .pipe(gulp.dest('dist/css/'))
 });
 
 gulp.task('autoprefixer', function () {
-    return gulp.src('sass/main.sass')
+    return gulp.src('dist/css/main.css')
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
         }))
-        .pipe(gulp.dest('css/'))
+        .pipe(gulp.dest('dist/css'))
 });
 
 //define watch task
